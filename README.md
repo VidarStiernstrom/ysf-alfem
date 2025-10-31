@@ -7,24 +7,31 @@ The problem is solved using Uzawa iterations where at each iteration:
 2. The stress tensor and strain rate (Lagrange multipliers) enforcing the yield condition are updated.
 3. Convergence is checked based on residual norms of the augmented system.
 
-Currently, only Bingham fluid flow is implemented.
+Currently, only Bingham fluid flow is implemented. The project is WIP and needs verifation for correctness.
 
 ---
 
 ## Test cases
-Two main driver scripts are available.
-- `bingham_particle.py`: Solver for particle sedimenting in a Bingham fluid (or equivalently Bingham flow about a cylinder). See [2] for a similar problem setup. Run with `mpirun -np N python bingham_particle.py` where `N` is the number of MPI processes.
-- `stokes_particle.py`: Solves only the Stokes sub-problem on the particle domain using a manufactured solution. Intended for verification of the Stokes solver. Run with `python stokes_particle.py mode` where `mode` is either `plot` (plotting solution and errros) or `conv` (performs a convergence study).
+### `bingham_particle.py`:
 
-### Solver details
+Solver for particle sedimenting in a Bingham fluid (or equivalently Bingham flow about a cylinder). See [2] for a similar problem setup.
+
+Although only tested on 2D problems, most of the functionallity is implemented for general D-dimensional problems, based on the geometric dimension of the mesh
+
+Run with `mpirun -np N python bingham_particle.py` where `N` is the number of MPI processes.
+
+### `stokes_particle.py`:
+Solves only the Stokes sub-problem on the particle domain using a manufactured solution. Intended for verification of the Stokes solver.
+
+Run with `python stokes_particle.py mode` where `mode` is either `plot` (plotting solution and errros) or `conv` (performs a convergence study).
+
+### Stokes sub-problem solver details
 The Stokes-type subproblem is discretized using Taylor–Hood finite elements (P2–P1: quadratic velocity, linear pressure). This system is solved using the [PETSc](https://petsc.org/release/#) implementations of either
   - Iterative: MINRES with block AMG & Jacobi preconditioning
-  - Dircet: SuperLU.
-
-Although only tested on 2D problems, most of the functionallity is implemented for general D-dimensional problems, based on the geometric dimension of the mesh.
+  - Direct: SuperLU.
 
 ### TODO
-  - Verify correctness of Bingham fluid solver!
+  - Verify correctness of Bingham fluid solver!!
   - Adaptive mesh refinement. See adaptive mesh refinement strategies in [1] and [2].
 
 ## Dependencies
