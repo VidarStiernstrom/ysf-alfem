@@ -39,7 +39,7 @@ Solver for particle sedimenting in an incompressible Bingham fluid (or equivalen
 
 <figure>
     <img src="./assets/images/problem_setup_bingham.png"
-         width="75%">
+         width="50%">
     <figcaption>Figure 1. Problem setup considered in `bingham_particle.py`.</figcaption>
 </figure>
 
