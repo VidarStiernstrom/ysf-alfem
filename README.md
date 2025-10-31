@@ -1,4 +1,4 @@
-# Augmented Lagrangian finite element solver for yield-stress flow.
+# Augmented Lagrangian finite element solver for yield-stress flow
 
 This repository provides a Python implementation of an augmented Lagrangian finite element method for viscoplastic yield-stress flow. The finite element method is implemented using [FEniCSx](https://fenicsproject.org/).
 
@@ -55,6 +55,13 @@ The options are:
 
 Currently, for the same problem setup 'RS03' results in almost the entire fluid yielding, while for 'CT19-alg3' and 'freeFEM' gives similar results, where the fluid only yields close to the particle. 'CT19-alg1' diverges. Results from 'RS03' are presented in Figure 2, where in the left figure $q$ is the relaxed strain rate, $\dot D$ is the deformation rate, i.e., $\dot D_{ij} = 0.5 \dot \gamma_{ij}$, and superscripts is the iteration index.
 
+Run with `mpirun -np N python bingham_particle.py` where `N` is the number of MPI processes. Results are written in `BP4` format to `results/bingham_particle/<var_form_str>` and can be read with e.g., [ParaView](https://www.paraview.org/).
+
+**TODO**:
+- Fix/understand diverging results between different variational forms in the Bingham fluid solver. Verify correctness!
+- Adaptive mesh refinement. See adaptive mesh refinement strategies in [1] and [2].
+
+
 <figure float="left">
     <img src="./assets/images/ux_RS03_bingham.png"
          width="50%">
@@ -62,12 +69,6 @@ Currently, for the same problem setup 'RS03' results in almost the entire fluid 
          width="45%">     
     <figcaption>Figure 2. (left) x-component of fluid velocity after 1845 Uzawa iteration, (right) iteration residuals.</figcaption>
 </figure>
-
-Run with `mpirun -np N python bingham_particle.py` where `N` is the number of MPI processes. Results are written in `BP4` format to `results/bingham_particle/<var_form_str>` and can be read with e.g., [ParaView](https://www.paraview.org/).
-
-***TODO***
-- Fix/understand diverging results between different variational forms in the Bingham fluid solver. Verify correctness!
-- Adaptive mesh refinement. See adaptive mesh refinement strategies in [1] and [2].
 
 
 ### `stokes_particle.py`:
