@@ -34,7 +34,7 @@ from dolfinx import fem, io, default_scalar_type
 from particle_mesh import create_mesh, plot_mesh, on_exterior_boundary, on_interior_boundary
 from variational_forms import create_bilinear_form, create_linear_form
 from solvers import assemble_system_matrix, assemble_rhs_vector, create_direct_solver, create_iterative_solver, create_preconditioner
-from helpers import strain_rate, deformation_rate, vector_norm, tensor_norm, assemble_scalar, validate_args
+from helpers import strain_rate, deformation_rate, vector_norm, tensor_norm, assemble_scalar
 
 from ufl import (
     conditional,
