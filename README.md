@@ -59,7 +59,7 @@ Run with `mpirun -np N python bingham_particle.py` where `N` is the number of MP
 
 **TODO**:
 - Fix/understand diverging results between different variational forms in the Bingham fluid solver. Verify correctness!
-- Adaptive mesh refinement. See adaptive mesh refinement strategies in [1] and [2].
+- Implement adaptive mesh refinement. See adaptive mesh refinement strategies in [1] and [2]. Examples of dual-weighted residual refinement strategies (goal-oriented mesh adaptivity) in FEniCSx can aslo be found [here](https://github.com/nate-sime/dolfin_dg/blob/master/demo/dolfinx/poisson/dwr_poisson.py).
 
 
 <figure float="left">
