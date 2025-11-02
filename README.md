@@ -7,7 +7,7 @@ The problem is solved using Uzawa iterations where at each iteration:
 2. The stress tensor and strain rate (Lagrange multipliers) enforcing the yield condition are updated.
 3. Convergence is checked based on residual norms of the augmented system.
 
-***The project is WIP and needs verifation for correctness.***
+***The project is WIP and needs verification for correctness.***
 
 ---
 
